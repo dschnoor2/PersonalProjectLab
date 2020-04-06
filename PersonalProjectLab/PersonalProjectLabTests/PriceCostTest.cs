@@ -18,6 +18,7 @@ namespace PersonalProjectLabTests
             //asserting
             Assert.AreEqual(1.25m, materialCosts);
         }
+
         [TestMethod]
         public void PriceCosts_ManCostTest()
         {
@@ -29,6 +30,19 @@ namespace PersonalProjectLabTests
 
             //asserting
             Assert.AreEqual(100.00m, manHoursCost);
+        }
+
+        [TestMethod]
+        public void PrintCosts_MachineCostTest()
+        {
+            //arrange
+            PrintCostEstimator stats = new PrintCostEstimator();
+
+            //acting
+            decimal machineCost = stats.CalculatingMachineCost(25, 2);
+
+            //asserting
+            Assert.AreEqual(8.70m, machineCost);
         }
     }
 }
