@@ -47,6 +47,24 @@ namespace PersonalProjectLab
 
             return manHoursCost;
         }   
+
+        public decimal CalculatingTotalSalesCost(decimal materialCost, decimal machineCost, decimal manHoursCost)
+        {
+            decimal minimumSale = 20.00m;
+            decimal TotalCostPrint = 0.00m;
+            TotalCostPrint = (materialCost + machineCost + manHoursCost) * (decimal)(0.07) + (materialCost + machineCost + manHoursCost);
+
+            if (TotalCostPrint < 20)
+            {
+                return minimumSale;
+            }
+            else
+            {
+                return TotalCostPrint;
+            }
+
+            
+        }
         
     }
 }

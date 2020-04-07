@@ -57,7 +57,7 @@ namespace PersonalProjectLab
                 machineHours = int.Parse(machineInputs);
 
                 Console.WriteLine("Enter Charge to Run Machine");
-                Console.WriteLine("(Typically 0 to 5)");
+                Console.WriteLine("(Typically 0 to 5 depending on the desired level of detail)");
                 machineInputs = Console.ReadLine();
                 machineCostPerHour = int.Parse(machineInputs);
 
@@ -67,13 +67,14 @@ namespace PersonalProjectLab
                 //Write Machine Cost to Console
                 Console.WriteLine("");
                 Console.WriteLine("Machine Cost: " + machineCost);
-                Console.WriteLine("");
+                
 
                 //Prompt User to enter Man Hour Cost including estimated Man Hours needed and Cost per Man Hour
                 string manInputs = "";
                 int manHours = 0;
                 int manCostPerHour = 0;
-
+                
+                Console.WriteLine("");
                 Console.WriteLine("Enter Estimated Man Hours");
                 Console.WriteLine("(This includes File Setup, File Creation, and Manned Time to set up Machine)");
                 manInputs = Console.ReadLine();
@@ -91,24 +92,15 @@ namespace PersonalProjectLab
                 Console.WriteLine("Cost of Man Hours: " + manHoursCost);
                 Console.WriteLine("");
 
-                //Calculate Sale Costs Estimation
-                decimal totalCost = 0.00m;
-                totalCost = (decimal)manHoursCost + materialCost + machineCost;
+                //Calculate Sale Costs Estimation                
+                decimal totalSalesCost = stats.CalculatingTotalSalesCost(materialCost, machineCost, manHoursCost);
 
-                decimal saleCost = 0.00m;
-                saleCost = (decimal)(totalCost) * 3 * 7/100;
-                //If Cost is below Threshold raise Cost to minimum value.
-                if (saleCost < 15)
-                {
-                    saleCost = 15;
-                }
-                //Else Continue
-                else
-                {
+                //Print Values and total Costs/Charge to Console                
+                Console.WriteLine("Total Sales Cost: " + totalSalesCost);
+                
 
-                }
-                //Print Values and total Costs/Charge to Console
                 //Create Stream Writer and save new estimated values to file
+
                 //Ask User if they wish to continue
                 Console.WriteLine("Do you wish to calculate another estimation [1] Yes or [2] to quit program.");
                 string userAnswer = Console.ReadLine();

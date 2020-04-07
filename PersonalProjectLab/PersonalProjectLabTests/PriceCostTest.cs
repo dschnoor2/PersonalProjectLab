@@ -44,5 +44,31 @@ namespace PersonalProjectLabTests
             //asserting
             Assert.AreEqual(8.70m, machineCost);
         }
+
+        [TestMethod]
+        public void TotalSaleCost_Test()
+        {
+            //arrange
+            PrintCostEstimator stats = new PrintCostEstimator();
+
+            //acting
+            decimal totalPrintCost = stats.CalculatingTotalSalesCost(15, 10, 20);
+
+            //asserting
+            Assert.AreEqual(48.15m, totalPrintCost);
+        }
+
+        public void MinimumSale_Test()
+        {
+            //arrange
+            PrintCostEstimator stats = new PrintCostEstimator();
+
+            //acting
+            decimal totalPrintCost = stats.CalculatingTotalSalesCost(10, 7, 0);
+
+            //asserting
+            Assert.AreEqual(18.19m, totalPrintCost);
+
+        }
     }
 }
