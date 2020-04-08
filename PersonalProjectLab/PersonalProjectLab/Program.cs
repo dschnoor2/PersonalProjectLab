@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
-using System;
-using System.Text;
-using System.Text.Json.Serialization;
+﻿using System;
+using System.Globalization;
+using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace PersonalProjectLab
 {
@@ -10,7 +10,7 @@ namespace PersonalProjectLab
         static void Main(string[] args)
         {
             //Write Program Title to Console
-            Console.WriteLine("***3D Print Cost Estimator 1.5.47 by DSchnoor***");
+            Console.WriteLine("***3D Print Cost Estimator***");
             Console.WriteLine("");//Blankline for Readability
             
             bool userConintue = true;
@@ -84,20 +84,22 @@ namespace PersonalProjectLab
 
                 //Print Calculated All Values to Console
                 Console.WriteLine("");//Readability
-                Console.WriteLine("Cost of Material: " + materialCost);
-                Console.WriteLine("Cost of Machine: " + machineCost);
-                Console.WriteLine("Cost of Man Hours: " + manHoursCost);
+                Console.WriteLine("Material: " + materialCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                Console.WriteLine("Machine: " + machineCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                Console.WriteLine("Man Hours: " + manHoursCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
                 Console.WriteLine("Tax: 7%");
-                Console.WriteLine("Total Cost: " + totalSalesCost);
+                Console.WriteLine("Total Cost: " + totalSalesCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
                 Console.WriteLine("");//Readability
+                
                 
 
                 //Create Stream Writer and save new estimated values to file
-
+                
 
                 //Ask User if they wish to continue
                 Console.WriteLine("Do you wish to calculate another estimation [1] Yes or [2] to quit program.");
                 string userAnswer = Console.ReadLine();
+               
                 //If yes, Return to start of Program
                 if (userAnswer == "2")
                 {

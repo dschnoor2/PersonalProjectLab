@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Globalization;
-using System.Reflection.PortableExecutable;
 
 namespace PersonalProjectLab
 {
@@ -14,9 +12,10 @@ namespace PersonalProjectLab
         {
            //Material Cost is determined by (cost of the Roll / Roll Size) to get price per gram.
            //Price per gram multipled by amount of material used.
+           //Material Cost mulitplied by 2 to account for printing errors
             decimal materialCost = 0.00m;
 
-            materialCost = (decimal)filamentAmountNeeded * rollCost / rollSize;
+            materialCost = (decimal)filamentAmountNeeded * rollCost / rollSize *2;
 
             return materialCost;
         }
@@ -51,11 +50,11 @@ namespace PersonalProjectLab
 
         public decimal CalculatingTotalSalesCost(decimal materialCost, decimal machineCost, decimal manHoursCost)
         {
-            decimal minimumSale = 20.00m;
+            decimal minimumSale = 25.00m;
             decimal TotalCostPrint = 0.00m;
             TotalCostPrint = (materialCost + machineCost + manHoursCost) * (decimal)(0.07) + (materialCost + machineCost + manHoursCost);
            
-            if (TotalCostPrint < 20)
+            if (TotalCostPrint < minimumSale)
             {
                 return minimumSale;
             }

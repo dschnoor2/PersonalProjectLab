@@ -16,7 +16,7 @@ namespace PersonalProjectLabTests
             decimal materialCosts = stats.CalculatingMaterialCost(25, 50, 1000);
 
             //asserting
-            Assert.AreEqual(1.25m, materialCosts);
+            Assert.AreEqual(2.50m, materialCosts);
         }
 
         [TestMethod]
@@ -68,7 +68,7 @@ namespace PersonalProjectLabTests
             decimal minimumPrintCost = stats.CalculatingTotalSalesCost(10, 7, 0);
 
             //asserting
-            Assert.AreEqual(20, minimumPrintCost);
+            Assert.AreEqual(25.00m, minimumPrintCost);
 
         }
     }
