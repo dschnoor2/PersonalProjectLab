@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Reflection.PortableExecutable;
 
 namespace PersonalProjectLab
@@ -53,7 +54,7 @@ namespace PersonalProjectLab
             decimal minimumSale = 20.00m;
             decimal TotalCostPrint = 0.00m;
             TotalCostPrint = (materialCost + machineCost + manHoursCost) * (decimal)(0.07) + (materialCost + machineCost + manHoursCost);
-
+           
             if (TotalCostPrint < 20)
             {
                 return minimumSale;

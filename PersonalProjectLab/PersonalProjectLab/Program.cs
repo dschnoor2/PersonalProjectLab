@@ -25,6 +25,7 @@ namespace PersonalProjectLab
                 int rollSize = 0;
 
                 Console.WriteLine("Enter the Estimated amount of filament needed in grams");
+                Console.WriteLine("(This Includeds Supports, Rafts, Brim)");
                 materialInput = Console.ReadLine();
                 filamentAmountNeeded = int.Parse(materialInput);
 
@@ -42,10 +43,6 @@ namespace PersonalProjectLab
 
                 decimal materialCost = stats.CalculatingMaterialCost(filamentAmountNeeded, rollCost, rollSize);
 
-                //Write Material Costs to Console
-                Console.WriteLine("");
-                Console.WriteLine("Material Cost: " + materialCost);
-
                 //Prompt User to enter Machine Cost including estimated Machine Run Time and Charge per Hour for Machine
                 string machineInputs = "";
                 int machineHours = 0;
@@ -62,12 +59,7 @@ namespace PersonalProjectLab
                 machineCostPerHour = int.Parse(machineInputs);
 
                 //Calculate Machine Costs               
-                decimal machineCost = stats.CalculatingMachineCost(machineHours, machineCostPerHour);
-
-                //Write Machine Cost to Console
-                Console.WriteLine("");
-                Console.WriteLine("Machine Cost: " + machineCost);
-                
+                decimal machineCost = stats.CalculatingMachineCost(machineHours, machineCostPerHour);                            
 
                 //Prompt User to enter Man Hour Cost including estimated Man Hours needed and Cost per Man Hour
                 string manInputs = "";
@@ -87,19 +79,21 @@ namespace PersonalProjectLab
                 //Calculate Man Hours Cost 
                 decimal manHoursCost = stats.CalculatingManHoursCost(manHours, manCostPerHour);
 
-                //Write Man Hours Cost to the Console
-                Console.WriteLine("");
-                Console.WriteLine("Cost of Man Hours: " + manHoursCost);
-                Console.WriteLine("");
-
                 //Calculate Sale Costs Estimation                
                 decimal totalSalesCost = stats.CalculatingTotalSalesCost(materialCost, machineCost, manHoursCost);
 
-                //Print Values and total Costs/Charge to Console                
-                Console.WriteLine("Total Sales Cost: " + totalSalesCost);
+                //Print Calculated All Values to Console
+                Console.WriteLine("");//Readability
+                Console.WriteLine("Cost of Material: " + materialCost);
+                Console.WriteLine("Cost of Machine: " + machineCost);
+                Console.WriteLine("Cost of Man Hours: " + manHoursCost);
+                Console.WriteLine("Tax: 7%");
+                Console.WriteLine("Total Cost: " + totalSalesCost);
+                Console.WriteLine("");//Readability
                 
 
                 //Create Stream Writer and save new estimated values to file
+
 
                 //Ask User if they wish to continue
                 Console.WriteLine("Do you wish to calculate another estimation [1] Yes or [2] to quit program.");
