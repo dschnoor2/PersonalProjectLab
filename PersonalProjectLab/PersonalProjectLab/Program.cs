@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using System.IO;
-using System.Runtime.CompilerServices;
+using System.IO; 
 
 namespace PersonalProjectLab
 {
@@ -18,7 +17,8 @@ namespace PersonalProjectLab
             while (userConintue) 
             {
                 //Prompt User to enter Filament Information including Roll Cost, Roll Size, and Estimated amount needed
-                
+
+
                 string materialInput = "";
                 int filamentAmountNeeded = 0;
                 int rollCost = 0;
@@ -68,7 +68,7 @@ namespace PersonalProjectLab
                 
                 Console.WriteLine("");
                 Console.WriteLine("Enter Estimated Man Hours");
-                Console.WriteLine("(This includes File Setup, File Creation, and Manned Time to set up Machine)");
+                Console.WriteLine("(This includes File Setup, File Creation, and Final Cleaning)");
                 manInputs = Console.ReadLine();
                 manHours = int.Parse(manInputs);
 
@@ -79,25 +79,67 @@ namespace PersonalProjectLab
                 //Calculate Man Hours Cost 
                 decimal manHoursCost = stats.CalculatingManHoursCost(manHours, manCostPerHour);
 
+
                 //Calculate Sale Costs Estimation                
                 decimal totalSalesCost = stats.CalculatingTotalSalesCost(materialCost, machineCost, manHoursCost);
 
-                //Print Calculated All Values to Console
-                Console.WriteLine("");//Readability
-                Console.WriteLine("Material: " + materialCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
-                Console.WriteLine("Machine: " + machineCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
-                Console.WriteLine("Man Hours: " + manHoursCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
-                Console.WriteLine("Tax: 7%");
-                Console.WriteLine("Total Cost: " + totalSalesCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
-                Console.WriteLine("");//Readability
-                
-                
+                //Request Print Description                
+                Console.WriteLine("Would you like to give a Description of the Print? [1] Yes or [2] No");
 
-                //Create Stream Writer and save new estimated values to file
-                
+                string descriptionAnswer = Console.ReadLine();
+                if (descriptionAnswer == "1")
+                {
+                    Console.WriteLine("Please give Print Desciption");
+                    string printDescription = Console.ReadLine();
 
+                    //Print Calculated All Values to Console
+                    Console.WriteLine("");//Readablility
+                    Console.WriteLine("File Description: " + printDescription);
+                    Console.WriteLine("Material: " + materialCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                    Console.WriteLine("Machine: " + machineCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                    Console.WriteLine("Man Hours: " + manHoursCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                    Console.WriteLine("Tax: 7%");
+                    Console.WriteLine("Total Cost: " + totalSalesCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                    Console.WriteLine("");//Readability
+
+                    //Create Stream Writer and save new estimated values to file                             
+                    using (StreamWriter outputFile = new StreamWriter("PrintCostEstimation.txt"))
+                    {
+                        outputFile.WriteLine(DateTime.Now);
+                        outputFile.WriteLine("File Description: " + printDescription);
+                        outputFile.WriteLine("Material: " + materialCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                        outputFile.WriteLine("Machine: " + machineCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                        outputFile.WriteLine("Man Hours: " + manHoursCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                        outputFile.WriteLine("Tax: 7%");
+                        outputFile.WriteLine("Total Cost: " + totalSalesCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                    }
+                }
+
+                else
+                {
+                    //Print Calculated All Values to Console
+                    Console.WriteLine("");//Readability
+                    Console.WriteLine("Material: " + materialCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                    Console.WriteLine("Machine: " + machineCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                    Console.WriteLine("Man Hours: " + manHoursCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                    Console.WriteLine("Tax: 7%");
+                    Console.WriteLine("Total Cost: " + totalSalesCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                    Console.WriteLine("");//Readability
+
+                    //Create Stream Writer and save new estimated values to file                             
+                    using (StreamWriter outputFile = new StreamWriter("PrintCostEstimation.txt"))
+                    {
+                        outputFile.WriteLine(DateTime.Now);
+                        outputFile.WriteLine("");//Readability
+                        outputFile.WriteLine("Material: " + materialCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                        outputFile.WriteLine("Machine: " + machineCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                        outputFile.WriteLine("Man Hours: " + manHoursCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                        outputFile.WriteLine("Tax: 7%");
+                        outputFile.WriteLine("Total Cost: " + totalSalesCost.ToString("C", CultureInfo.GetCultureInfo("en-US")));
+                    }
+                }
                 //Ask User if they wish to continue
-                Console.WriteLine("Do you wish to calculate another estimation [1] Yes or [2] to quit program.");
+                Console.WriteLine("Do you wish to calculate another estimation? [1] Yes or [2] to quit program.");
                 string userAnswer = Console.ReadLine();
                
                 //If yes, Return to start of Program

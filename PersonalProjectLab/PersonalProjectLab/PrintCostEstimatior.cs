@@ -19,6 +19,7 @@ namespace PersonalProjectLab
 
             return materialCost;
         }
+
         public decimal CalculatingMachineCost(int machineHour, int machineCostPerHour)
         {
             //Machine Cost is a Combination of charge to run the machine, machine wear and tear, and maintence costs.
@@ -39,6 +40,7 @@ namespace PersonalProjectLab
                         
             return machineCost;
         }
+
         public decimal CalculatingManHoursCost(int manHours, int manCostPerHour)
         {
             //Man Hours Cost = Estimated man hours (including file creating, set up, physical set up) * cost per man hour

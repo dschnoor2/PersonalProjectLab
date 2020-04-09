@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Update="datafile.txt">
+      <None Update="PrintEstimate.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
