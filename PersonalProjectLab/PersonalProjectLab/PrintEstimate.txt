@@ -1,7 +1,0 @@
-4/9/2020 11:20:15 AM
-Material: $21.60
-Machine: $20.88
-Man Hours: $40.00
-Tax: 7%
-Total Cost: $88.25
-
